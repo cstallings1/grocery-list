@@ -5,9 +5,7 @@ var Item = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <div>Name: {this.props.name}</div>
-      </div>
+      <li>{this.props.name}</li>
     );
   }
 });
