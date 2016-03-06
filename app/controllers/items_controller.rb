@@ -14,6 +14,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @list = List.find(item_params[:list_id])
+    item = Item.find(params[:id])
+    item.destroy
+    flash[:notice] = "Your item has been deleted."
+    if request.xhr?
+      respond_to do |format|
+        format.json  { render :json => @list.to_json(:include => [:items])}
+      end
+    end
+  end
+
   private
     def item_params
       params.require(:item).permit(:name, :complete, :list_id)

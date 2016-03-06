@@ -20,9 +20,29 @@ App.GroceryListItem = React.createClass({
   },
 
   handleDeleteItem: function(item) {
-    var index = App.groceryList.items.indexOf(item);
-    App.groceryList.items.splice(index, 1);
-    this.props.reRenderGroceryList();
+    // var index = App.groceryList.items.indexOf(item);
+    var itemData =
+      {
+        item: {
+          list_id: App.groceryList.id,
+          name: item.name,
+          complete: item.complete
+        }
+      };
+    var request = $.ajax({
+      url: "/items/" + this.props.item.id,
+      method: "DELETE",
+      dataType: "json",
+      cache: false,
+      data: itemData,
+      success: function(data) {
+        App.groceryList = data;
+          // this.setState({newItemValue: ""});
+          this.props.reRenderGroceryList();
+        }.bind(this)
+    });
+
+    // App.groceryList.items.splice(index, 1);
   },
 
   handleCompleteItem: function(item) {

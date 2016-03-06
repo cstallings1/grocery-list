@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   #   resources :items, only: [:new, :create]
   # end
 
-  # resources :items, only: [:index, :destroy, :update]
+  resources :items, only: [:create, :destroy, :update]
 
-  post '/items' => 'items#create'
   root to: 'lists#index'
 
   # Example of regular route:
