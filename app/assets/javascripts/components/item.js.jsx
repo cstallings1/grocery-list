@@ -61,9 +61,6 @@ App.GroceryListItem = React.createClass({
           this.props.reRenderGroceryList();
         }.bind(this)
     });
-
-    // item.complete = true;
-    // this.forceUpdate();
   },
 });
 
