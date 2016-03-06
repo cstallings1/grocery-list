@@ -1,3 +1,3 @@
 class Item < ActiveRecord::Base
-  validates :item, uniqueness: true
+  belongs_to :list
 end

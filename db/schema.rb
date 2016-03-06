@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(version: 20160306020721) do
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.boolean  "complete",   default: false
+    t.integer  "list_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
   create_table "lists", force: :cascade do |t|
-    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
