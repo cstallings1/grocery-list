@@ -1,3 +1,30 @@
+#App {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+
+.main-title {
+  font-size: 60px;
+}
+
+.list-group {
+  margin-top: 2%;
+  margin-left: 23.5%;
+  width: 53%;
+}
+
+.form-control {
+  height: 46px;
+  width: 40%;
+  display: inline-block;
+  margin-right: 2%;
+}
+
+.btn-primary {
+  height: 46px;
+}
+
 .complete {
   text-decoration: line-through;
 }
@@ -5,3 +32,17 @@
 .incomplete {
   text-decoration: none;
 }
+
+.fa-check {
+  float: left;
+}
+
+.fa-times {
+  float: right;
+}
+
+/*.item {
+  display: inline-block;
+  margin-left: 30%;
+  margin-right: 30%;
+}*/

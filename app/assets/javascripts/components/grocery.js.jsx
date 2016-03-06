@@ -9,22 +9,22 @@ App.Grocery = React.createClass({
 
   render: function() {
     return (
-      <div>
-        <h1>Grocery List</h1>
-        <input placeholder="item"
+      <div className="lead">
+        <h1 className="main-title">Grocery List</h1>
+        <input className="form-control" placeholder="item"
           value = { this.state.newItemValue }
           onChange = { this.handleOnChange }
           onKeyDown = {this.handleKeyDown}
         />
-        <button onClick={this.handleAddItem}>add item</button>
-        <ul>
+        <button className="btn btn-primary" onClick={this.handleAddItem}>add item</button>
+        <ul className="list-group">
           {
             App.groceryList.items.map(function(item, i){
               var listItemClass = (item.complete ? "complete" : "incomplete")
               return (
-                <li key={i} className={listItemClass}>
+                <li key={i} className={listItemClass + " list-group-item"}>
                   <i className="fa fa-check fa-1x" onClick={this.handleCompleteItem.bind(null, item)}></i>
-                  {item.name}
+                  <span className="item">{item.name}</span>
                   <i className="fa fa-times fa-1x" onClick={this.handleDeleteItem.bind(null, item)}></i>
                 </li>
               );
@@ -40,7 +40,8 @@ App.Grocery = React.createClass({
     if (this.state.newItemValue !== "") {
       var item = new App.Item(this.state.newItemValue );
       App.groceryList.items.push(item);
-      this.forceUpdate();
+      this.setState({newItemValue: ""});
+      // this.forceUpdate();
     };
   },
 
