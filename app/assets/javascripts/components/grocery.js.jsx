@@ -20,14 +20,8 @@ App.Grocery = React.createClass({
         <ul className="list-group">
           {
             App.groceryList.items.map(function(item, i){
-              var listItemClass = (item.complete ? "complete" : "incomplete")
-              return (
-                <li key={i} className={listItemClass + " list-group-item"}>
-                  <i className="fa fa-check fa-1x" onClick={this.handleCompleteItem.bind(null, item)}></i>
-                  <span className="item">{item.name}</span>
-                  <i className="fa fa-times fa-1x" onClick={this.handleDeleteItem.bind(null, item)}></i>
-                </li>
-              );
+              return <App.GroceryListItem key={i} item={item} reRenderGroceryList={this.reRenderGroceryList} />
+
             }.bind(this))
           }
         </ul>
@@ -35,13 +29,15 @@ App.Grocery = React.createClass({
     );
   },
 
+  reRenderGroceryList: function() {
+    this.forceUpdate();
+  },
 
   handleAddItem: function() {
     if (this.state.newItemValue !== "") {
       var item = new App.Item(this.state.newItemValue );
       App.groceryList.items.push(item);
       this.setState({newItemValue: ""});
-      // this.forceUpdate();
     };
   },
 
@@ -53,17 +49,6 @@ App.Grocery = React.createClass({
 
   handleOnChange: function(event) {
     this.setState({ newItemValue: event.target.value });
-  },
-
-  handleDeleteItem: function(item) {
-    var index = App.groceryList.items.indexOf(item);
-    App.groceryList.items.splice(index, 1);
-    this.setState({newItemValue: ""});
-  },
-
-  handleCompleteItem: function(item) {
-    item.complete = true;
-    this.forceUpdate();
   },
 
 });
