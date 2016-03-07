@@ -4,11 +4,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-
-  # resources :lists, only: [:index, :new, :create] do
-  #   resources :items, only: [:new, :create]
-  # end
-
   resources :items, only: [:create, :destroy, :update]
 
   root to: 'lists#index'

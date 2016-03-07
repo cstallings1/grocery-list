@@ -1,7 +1,6 @@
 var ENTER_KEY = 13;
 
 App.Grocery = React.createClass({
-  propTypes: {},
 
   getInitialState: function() {
     return { newItemValue: "" }
